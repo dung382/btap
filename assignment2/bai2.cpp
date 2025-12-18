@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+#include <limits>
 
 using namespace std;
 
@@ -13,17 +15,28 @@ bool Check(int N) {
 }
 int main() {
     int N;
-    cout << "Nhap n : " << endl;
-    cin >> N;
-    if (N <= 1 || N >= 10000) {
-        cout << "N khong thoa man dieu kien !" << endl;
-        return 0;
+    char check;
+    while(true) {
+        cout << "Nhap n : " << endl;
+        cin >> N;
+        while(true){
+            if (cin.fail() || N <= 1 || N >= 10000) {
+                    cout << "Loi: Ban phai nhap mot so nguyen nam trong khoang (1, 10000)!" << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                } else {
+                    break;
+            }
+        }
+        if (Check(N)) {
+            cout << N << " la so nguyen to" << endl;
+        } else {
+            cout << "N khong phai so nguyen to !" << endl;
+        }
+        char check;
+        cout << "co muon tiep tuc nhap so 0(y/n) :";
+        if(check == 'n'){
+            return 0;
+        }
     }
-
-    if (Check(N)) {
-        cout << N << " la so nguyen to" << endl;
-    } else {
-        cout << "N khong phai so nguyen to !" << endl;
-    }
-    return 0;
 }
