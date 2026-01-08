@@ -1,4 +1,5 @@
 #include <stdio.h>
+// khong dung duoc pass by ref vi trong c khong ho tro 
 void swap(int *evenNumber, int *oddNumber) {
     int temp = *evenNumber;
     *evenNumber = *oddNumber;
@@ -7,10 +8,8 @@ void swap(int *evenNumber, int *oddNumber) {
 int main() {
     int evenNumber = 2;
     int oddNumber   = 3;
-    int *p = &evenNumber;
-    int *s = &oddNumber;
     printf("evenNumber: %d, oddNumber : %d\n", evenNumber, oddNumber);
-    swap(p, s);
+    swap(&evenNumber, &oddNumber);
     printf("evenNumber: %d, oddNumber : %d\n", evenNumber, oddNumber);
     return 0;
 }

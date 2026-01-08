@@ -1,10 +1,9 @@
 #include <iostream>
 using namespace std;
-void Change(int A, int B) {
+void Change(int &A, int &B) {
     int temp = A;
     A = B;
     B = temp;
-    cout << "gia tri cua a sau khi doi " << A << " gia tri cua b sau khi doi " << B << endl;
 }
 int main() {
     int A;
@@ -14,5 +13,6 @@ int main() {
     cout << "Nhap B : " << endl;
     cin >> B;
     Change(A, B);
+    cout << "gia tri cua a sau khi doi " << A << " gia tri cua b sau khi doi " << B << endl;
     return 0;
 }

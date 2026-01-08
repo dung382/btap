@@ -14,6 +14,15 @@ int main() {
     int b;
     cout << "nhap a : ";
     cin >> a;
+    while (true) {
+        cout << "nhap a : ";
+        cin >> a;
+        if (a < 1) {
+            cout << "a khong duoc nho hon 1 !";
+        } else {
+            break;
+        }
+    }
     cout << "nhap b : ";
     cin >> b;
     cout << "uoc chung lon nhat la " << GDC(a, b) << endl;
