@@ -1,11 +1,9 @@
 #include "Hotel.hpp"
 #include <iostream>
+#include "../InputUtils.hpp"
 
 void Hotel::input(std::istream& in) {
-    int n;
-    std::cout << "Enter number of renters: ";
-    in >> n;
-    if (n < 0) n = 0;
+    int n = readInt("Enter number of renters: ", 0);
 
     rentals.clear();
     rentals.reserve(static_cast<size_t>(n));

@@ -1,12 +1,9 @@
 #include "Town.hpp"
 #include <iostream>
+#include "../InputUtils.hpp"
 
 void Town::input(std::istream& in) {
-    int n;
-    std::cout << "Enter number of households: ";
-    in >> n;
-    if (n < 0) n = 0;
-
+    int n = readInt("Enter number of households: ", 0);
     households.clear();
     households.reserve(static_cast<size_t>(n));
 

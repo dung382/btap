@@ -1,4 +1,5 @@
 #include "Household.hpp"
+#include "../InputUtils.hpp"
 #include <iostream>
 
 int Household::getMemberCount() const { return memberCount; }
@@ -14,11 +15,9 @@ bool Household::hasNameKeyword(const std::string& keyword) const {
 }
 
 void Household::input(std::istream& in) {
-    std::cout << "House number: ";
-    in >> houseNumber;
+    houseNumber = readInt("House number: ", 0);
 
-    std::cout << "Number of members: ";
-    in >> memberCount;
+    memberCount = readInt("Number of members: ", 0);
     if (memberCount < 0) memberCount = 0;
 
     members.clear();

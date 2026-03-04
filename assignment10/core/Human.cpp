@@ -1,6 +1,7 @@
 #include "Human.hpp"
 #include <limits>
 #include <iostream>
+#include "../InputUtils.hpp"
 
 Human::Human(std::string id, std::string name, int by, int a, std::string j)
     : idCard(std::move(id)), fullName(std::move(name)), birthYear(by), age(a), job(std::move(j)) {}
@@ -12,24 +13,13 @@ int Human::getAge() const { return age; }
 const std::string& Human::getJob() const { return job; }
 
 void Human::input(std::istream& in) {
-    // Xóa newline còn dư trước khi getline
-    in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    idCard   = readLine(in, "  ID card (CMND/CCCD): ");
+    fullName = readLine(in, "  Full name: ");
 
-    std::cout << "  ID card (CMND/CCCD): ";
-    std::getline(in, idCard);
+    birthYear = readInt(in, "  Birth year: ", 1900, 2100);
+    age       = readInt(in, "  Age: ", 0, 150);
 
-    std::cout << "  Full name: ";
-    std::getline(in, fullName);
-
-    std::cout << "  Birth year: ";
-    in >> birthYear;
-
-    std::cout << "  Age: ";
-    in >> age;
-
-    in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "  Job: ";
-    std::getline(in, job);
+    job = readLine(in, "  Job: ");
 }
 
 void Human::output(std::ostream& out) const {

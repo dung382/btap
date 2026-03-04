@@ -1,6 +1,7 @@
 #include "Rental.hpp"
 #include <iostream>
 #include <limits>
+#include "../InputUtils.hpp"
 
 const Human& Rental::getPerson() const { return person; }
 int Rental::getDays() const { return days; }
@@ -21,17 +22,9 @@ void Rental::input(std::istream& in) {
     std::cout << "Enter renter information:\n";
     person.input(in);
 
-    std::cout << "Number of rental days: ";
-    in >> days;
-
-    // Xóa newline trước khi getline loại phòng
-    in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Room type: ";
-    std::getline(in, roomType);
-
-    std::cout << "Price per day: ";
-    in >> pricePerDay;
+    days      = readInt(in, "Number of days: ", 1);
+    roomType  = readLine(in, "Room type: ");
+    pricePerDay = readDouble(in, "Price per day: ", 0);
 }
 
 void Rental::output(std::ostream& out) const {

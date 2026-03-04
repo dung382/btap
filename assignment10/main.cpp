@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "bai1/Town.hpp"
+#include "InputUtils.hpp"
 #include "bai2/Hotel.hpp"
 
 // ===== MENU FOR TOWN =====
@@ -16,8 +17,7 @@ static void menuTown() {
                   << "0. Back\n"
                   << "Choose: ";
 
-        int choice;
-        std::cin >> choice;
+        int choice = readInt("Choose: ", 0, 4);
 
         if (choice == 0) break;
 
@@ -25,16 +25,11 @@ static void menuTown() {
             town.input(std::cin);
         }
         else if (choice == 2) {
-            std::cout << "Enter name keyword: ";
-            std::string keyword;
-            std::cin.ignore();
-            std::getline(std::cin, keyword);
+            std::string keyword = readLine("Enter name keyword: ");
             town.searchByName(keyword, std::cout);
         }
         else if (choice == 3) {
-            std::cout << "Enter house number: ";
-            int houseNumber;
-            std::cin >> houseNumber;
+            int houseNumber = readInt("Enter house number: ", 0);
             town.searchByHouseNumber(houseNumber, std::cout);
         }
         else if (choice == 4) {
@@ -59,8 +54,7 @@ static void menuHotel() {
                   << "0. Back\n"
                   << "Choose: ";
 
-        int choice;
-        std::cin >> choice;
+        int choice = readInt("Choose: ", 0, 4);
 
         if (choice == 0) break;
 
@@ -71,17 +65,11 @@ static void menuHotel() {
             hotel.displayAll(std::cout);
         }
         else if (choice == 3) {
-            std::cout << "Enter name keyword: ";
-            std::string keyword;
-            std::cin.ignore();
-            std::getline(std::cin, keyword);
+            std::string keyword = readLine("Enter name keyword: ");
             hotel.searchByName(keyword, std::cout);
         }
         else if (choice == 4) {
-            std::cout << "Enter name keyword for checkout: ";
-            std::string keyword;
-            std::cin.ignore();
-            std::getline(std::cin, keyword);
+            std::string keyword = readLine("Enter name keyword for checkout: ");
             hotel.checkoutByName(keyword, std::cout);
         }
         else {
@@ -98,8 +86,7 @@ int main() {
                   << "0. Exit\n"
                   << "Choose: ";
 
-        int choice;
-        std::cin >> choice;
+        int choice = readInt("Choose: ", 0, 2);
 
         if (choice == 0) break;
 
